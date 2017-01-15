@@ -1,0 +1,29 @@
+## Customize the test machine
+machine:
+    timezone:
+        America/Denver # Set the timezone
+
+## Customize dependencies
+dependencies:
+    pre:
+        - npm install -g typescript typings ionic cordova angular-cli@latest
+        - typings install
+        - ionic platform add android
+        - ionic platform add ios
+        - gem install fastlane -v 2.2.0
+
+## customize test commands
+test:
+    override:
+        - ng lint
+        - ng test --watch=false --code-coverage
+
+    post:
+        - cp -R ./coverage $CIRCLE_ARTIFACTS
+
+deployment:
+    beta_distribution:
+        branch: 'develop2'
+        commands:
+            - fastlane ios beta build_number:$CIRCLE_BUILD_NUM
+            - cp -R ./dist $CIRCLE_ARTIFACTS
