@@ -16,17 +16,17 @@ dependencies:
 
     override:
         - npm install
-        - ionic platform add android
+        - cd ~/barcode-test/
         - ionic platform add ios
 
 ## customize test commands
 test:
     override:
-        - ionic build
+        - ionic build ios
 
 deployment:
     beta_distribution:
-        branch: 'develop2'
+        branch: 'master'
         commands:
             - fastlane ios beta build_number:$CIRCLE_BUILD_NUM
             - cp -R ./dist $CIRCLE_ARTIFACTS
