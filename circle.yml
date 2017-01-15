@@ -12,18 +12,17 @@ dependencies:
     pre:
         - npm install -g typescript typings ionic cordova angular-cli@latest
         - typings install
+        - gem install fastlane -v 2.2.0
+
+    override:
+        - npm install
         - ionic platform add android
         - ionic platform add ios
-        - gem install fastlane -v 2.2.0
 
 ## customize test commands
 test:
     override:
-        - ng lint
-        - ng test --watch=false --code-coverage
-
-    post:
-        - cp -R ./coverage $CIRCLE_ARTIFACTS
+        - ionic build
 
 deployment:
     beta_distribution:
