@@ -6,7 +6,6 @@ machine:
     environment:
         XCODE_SCHEME: symbolicator
         XCODE_WORKSPACE: symbolicator
-        GYM_CODE_SIGNING_IDENTITY: "iPhone Developer: Jesse Sanders (XWQTC5P4G9)"
         PATH: $NVM_BIN:$PATH
 
 ## Customize dependencies
