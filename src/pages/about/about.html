@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      About
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-select [(ngModel)]="format">
+        <ion-option *ngFor="let format of formats" [value]="format">{{format}}</ion-option>
+    </ion-select>
+
+    <button ion-button (click)="scan()">Scan</button>
+    <button ion-button (click)="close()">Close</button>
+    <button ion-button (click)="flash()">Flash</button>
+</ion-content>
