@@ -17,7 +17,7 @@ dependencies:
 
     override:
         - npm install
-        - cordova platform add ios
+        - cd ~/barcode-test && cordova platform add ios
 
 ## customize test commands
 test:
