@@ -3,6 +3,10 @@ machine:
     timezone:
         America/Denver # Set the timezone
 
+    environment:
+        XCODE_SCHEME: symbolicator
+        XCODE_WORKSPACE: symbolicator
+
 ## Customize dependencies
 dependencies:
     pre:
