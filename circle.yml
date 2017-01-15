@@ -10,14 +10,15 @@ machine:
 ## Customize dependencies
 dependencies:
     pre:
-        - npm install -g typescript typings ionic cordova angular-cli@latest
+        - npm install -g typescript typings ionic cordova angular-cli@latest ios-sim ios-deploy
         - typings install
         - gem install fastlane -v 2.2.0
 
     override:
-        - npm install
-        - cd ~/barcode-test/
-        - ionic platform add ios
+        - npm install:
+            environment:
+                PATH: $NVM_BIN:$PATH
+        - cordova platform add ios
 
 ## customize test commands
 test:
