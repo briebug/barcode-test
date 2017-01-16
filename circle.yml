@@ -12,12 +12,11 @@ machine:
 ## Customize dependencies
 dependencies:
     pre:
-        - npm install -g typescript ionic cordova
+        - npm install -g typescript ionic cordova@6.4.0 ios-deploy ios-sim
         - gem update fastlane
 
     post:
         - ionic platform add ios
-        - ionic platform add android
 
 ## customize test commands
 test:
