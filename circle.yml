@@ -5,6 +5,7 @@ machine:
 
     environment:
         XCODE_WORKSPACE: ""
+        XCODE_SCHEME: ""
 
 ## Customize dependencies
 dependencies:
