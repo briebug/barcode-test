@@ -31,9 +31,9 @@ platform :ios do
     # match(type: "appstore") # more information: https://codesigning.guide
     sigh
     cert
-    increment_build_number(xcodeproj: 'platforms/ios/barcode-test.xcodeproj', build_number: options[:build_number])
+    #increment_build_number(xcodeproj: 'platforms/ios/barcode-test.xcodeproj', build_number: options[:build_number])
     gym(scheme: "barcode-test", workspace: 'platforms/ios/barcode-test.xcworkspace', clean: true, output_directory: 'dist/ios') # Build your app - more options available
-    pilot
+    #pilot
 
     # sh "your_script.sh"
     # You can also use other beta testing services here (run `fastlane actions`)
