@@ -5,6 +5,7 @@ machine:
 
     environment:
         XCODE_WORKSPACE: "platforms/ios/barcode-test.xcworkspace"
+        XCODE_SCHEME: ""
 
 ## Customize dependencies
 dependencies:
