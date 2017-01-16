@@ -16,6 +16,7 @@ dependencies:
         - gem update fastlane
 
     post:
+        - mkdir www
         - ionic platform add ios
 
 ## customize test commands
