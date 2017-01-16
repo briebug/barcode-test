@@ -33,3 +33,7 @@ $RECYCLE.BIN/
 .DS_Store
 Thumbs.db
 UserInterfaceState.xcuserstate
+*.mobileprovision
+*.cer
+fastlane/*.md
+fastlane/*.xml

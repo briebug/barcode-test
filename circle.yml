@@ -5,7 +5,7 @@ machine:
 
     environment:
         XCODE_WORKSPACE: "platforms/ios/barcode-test.xcworkspace"
-        GYM_CODE_SIGNING_IDENTITY: "iPhone Distribution: BrieBug Software, Inc. (WWGHJPQMF8)"
+        GYM_CODE_SIGNING_IDENTITY: "iPhone Distribution: BrieBug Software, Inc. (4CS6W5LV48)"
 
     xcode:
         version: 8.0
@@ -23,11 +23,12 @@ dependencies:
 ## customize test commands
 test:
     override:
-        - ionic build ios
-
+        - echo 'No tests to run'
 deployment:
     beta_distribution:
         branch: 'develop'
         commands:
+            - ionic build ios --release
+            - ruby fastlane/select_xcode_signing_method.rb -p platforms/ios/barcode-test.xcodeproj -t barcode-test -m 'Manual'
             - fastlane ios beta build_number:$CIRCLE_BUILD_NUM
             - cp -R ./dist $CIRCLE_ARTIFACTS
