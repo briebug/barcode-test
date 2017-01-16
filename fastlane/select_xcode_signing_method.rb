@@ -6,12 +6,13 @@ require 'xcodeproj'
 # ruby select_xcode_signing_method.rb -p <path/to/xcode_project> -t <Target> -m ['Automatic' | 'Manual']
 
 class Options
-  attr_accessor :path, :target, :method
+  attr_accessor :path, :target, :method, :build_number
 
   def initialize(args)
     @path = args[:path] || Dir.glob("*.xcodeproj").first
     @target = args[:target]
     @method = args[:method]
+    @build_number = args[:build_number]
   end
 end
 
@@ -26,6 +27,8 @@ def parse_args
         abort('There is no file at specified path.')
       end
       options_hash[:path] = path
+    when '--build_number', '-b'
+      options_hash[:build_number] = args[index + 1]
     when '--target', '-t'
       options_hash[:target] = args[index + 1]
     when '--signing_method', '-m'
@@ -55,5 +58,6 @@ project.save
 puts "Code signing was set to '#{options.method}'."
 
 plist = Xcodeproj::Plist.read_from_path('platforms/ios/barcode-test/barcode-test-Info.plist')
+plist['CFBundleVersion'] = options.build_number
 plist['ITSAppUsesNonExemptEncryption'] = false unless plist['ITSAppUsesNonExemptEncryption']
 Xcodeproj::Plist.write_to_path(plist, 'platforms/ios/barcode-test/barcode-test-Info.plist')
