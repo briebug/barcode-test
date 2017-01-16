@@ -5,6 +5,7 @@ machine:
 
     environment:
         XCODE_WORKSPACE: "platforms/ios/barcode-test.xcworkspace"
+        GYM_CODE_SIGNING_IDENTITY: "iPhone Distribution: BrieBug Software, Inc. (4CS6W5LV48)"
 
     xcode:
         version: 8.0
