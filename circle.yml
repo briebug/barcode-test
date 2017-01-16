@@ -5,12 +5,16 @@ machine:
 
     environment:
         XCODE_WORKSPACE: "platforms/ios/barcode-test.xcworkspace"
-        XCODE_SCHEME: ""
+        XCODE_SCHEME: "platforms/ios/barcode-test.xcworkspace/xcshareddata/xcschemes/barcode-test.xcscheme"
+
+    xcode:
+        version: 8.0
 
 ## Customize dependencies
 dependencies:
     pre:
         - npm install -g typescript ionic cordova
+        - gem update fastlane
 
     post:
         - ionic platform add ios
