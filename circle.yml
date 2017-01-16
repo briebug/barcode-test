@@ -6,18 +6,16 @@ machine:
     environment:
         XCODE_SCHEME: symbolicator
         XCODE_WORKSPACE: symbolicator
-        PATH: $NVM_BIN:$PATH
 
 ## Customize dependencies
 dependencies:
     pre:
-        - npm install -g typescript typings ionic cordova angular-cli@latest ios-sim ios-deploy
+        - npm install -g typescript typings ionic cordova ios-sim ios-deploy
         - typings install
         - gem install fastlane -v 2.2.0
 
-    override:
-        - npm install
-        - cd ~/barcode-test && cordova platform add ios
+    post:
+        - ionic platform add ios
 
 ## customize test commands
 test:
@@ -26,7 +24,7 @@ test:
 
 deployment:
     beta_distribution:
-        branch: 'master'
+        branch: 'develop'
         commands:
             - fastlane ios beta build_number:$CIRCLE_BUILD_NUM
             - cp -R ./dist $CIRCLE_ARTIFACTS
