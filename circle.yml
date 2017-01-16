@@ -4,18 +4,16 @@ machine:
         America/Denver # Set the timezone
 
     environment:
-        XCODE_SCHEME: symbolicator
-        XCODE_WORKSPACE: symbolicator
+        XCODE_WORKSPACE: ""
 
 ## Customize dependencies
 dependencies:
     pre:
-        - npm install -g typescript typings ionic cordova ios-sim ios-deploy
-        - typings install
-        - gem install fastlane -v 2.2.0
+        - npm install -g typescript ionic cordova
 
     post:
         - ionic platform add ios
+        - ionic platform add android
 
 ## customize test commands
 test:
