@@ -4,8 +4,7 @@ machine:
         America/Denver # Set the timezone
 
     environment:
-        XCODE_WORKSPACE: ""
-        XCODE_SCHEME: ""
+        XCODE_WORKSPACE: "platforms/ios/barcode-test.xcworkspace"
 
 ## Customize dependencies
 dependencies:
