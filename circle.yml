@@ -13,12 +13,14 @@ machine:
 ## Customize dependencies
 dependencies:
     pre:
+        - brew install android-sdk
+        - echo y | android update sdk --no-ui --all --filter "android-24,build-tools-24.0.2platform-tools,extra-android-m2repository,extra-google-m2repository"
         - npm install -g typescript ionic cordova@6.4.0 ios-deploy ios-sim
         - gem update fastlane
 
     post:
         - mkdir www
-        - ionic platform add ios
+        - ionic prepare
 
 ## customize test commands
 test:
