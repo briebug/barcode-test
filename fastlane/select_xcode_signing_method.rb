@@ -32,8 +32,12 @@ def parse_args
       options_hash[:build_number] = args[index + 1]
     when '--target', '-t'
       options_hash[:target] = args[index + 1]
-    when '--plist-location', '-l',
-      options_hash[:plist_location] = args[index + 1]
+    when '--plist-location', '-i'
+      path = args[index + 1]
+      unless File.exist?(path)
+        abort('There is no file at specified path.')
+      end
+      options_hash[:plist_location] = path
     when '--signing_method', '-m'
       method = args[index + 1]
       unless ['Automatic', 'Manual'].include?(method)

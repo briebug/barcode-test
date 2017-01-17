@@ -29,6 +29,6 @@ deployment:
         branch: 'develop'
         commands:
             - ionic build ios --release
-            - ruby fastlane/select_xcode_signing_method.rb -p platforms/ios/barcode-test.xcodeproj -t barcode-test -m 'Manual' -b $CIRCLE_BUILD_NUM -l 'platforms/ios/barcode-test/barcode-test-Info.plist'
+            - ruby fastlane/select_xcode_signing_method.rb -p platforms/ios/barcode-test.xcodeproj -t barcode-test -m 'Manual' -b $CIRCLE_BUILD_NUM -l platforms/ios/barcode-test/barcode-test-Info.plist
             - fastlane ios beta
             - cp -R ./dist $CIRCLE_ARTIFACTS
