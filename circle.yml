@@ -13,8 +13,10 @@ machine:
 ## Customize dependencies
 dependencies:
     pre:
+        - brew cask install java7
         - brew install android-sdk
-        - echo y | android update sdk --no-ui --all --filter "android-24,build-tools-24.0.2platform-tools,extra-android-m2repository,extra-google-m2repository"
+        - echo y | android update sdk --no-ui --all --filter tools,platform-tools,extra-google-m2repository,extra-google-google_play_services,extra-android-support,android-24
+        - echo y | android update sdk --no-ui --all --filter build-tools-24.0.0
         - npm install -g typescript ionic cordova@6.4.0 ios-deploy ios-sim
         - gem update fastlane
 
