@@ -64,6 +64,8 @@ project.save
 
 puts "Code signing was set to '#{options.method}'."
 
+puts "path: #{options.plist_location}"
+
 plist                                  = Xcodeproj::Plist.read_from_path(options.plist_location)
 plist['CFBundleVersion']               = options.build_number
 plist['ITSAppUsesNonExemptEncryption'] = false unless plist['ITSAppUsesNonExemptEncryption']
