@@ -38,4 +38,5 @@
         <variable name="CAMERA_USAGE_DESCRIPTION" value="To scan barcodes" />
     </plugin>
     <engine name="ios" spec="~4.3.1" />
+    <engine name="android" spec="~6.0.0" />
 </widget>
