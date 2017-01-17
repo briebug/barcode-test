@@ -13,7 +13,6 @@ machine:
 ## Customize dependencies
 dependencies:
     pre:
-        - mv /opt/homebrew-cask/Caskroom /usr/local
         - brew update
         - brew cask install java7
         - brew install android-sdk
