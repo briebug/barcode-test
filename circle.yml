@@ -14,6 +14,10 @@ machine:
 dependencies:
     pre:
         - brew update
+        - brew tap caskroom/cask
+        - brew install brew-cask
+        - brew tap caskroom/versions
+        - brew cask info java7
         - brew cask install java7
         - brew install android-sdk
         - echo y | android update sdk --no-ui --all --filter tools,platform-tools,extra-google-m2repository,extra-google-google_play_services,extra-android-support,android-24
