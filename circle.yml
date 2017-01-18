@@ -15,8 +15,6 @@ dependencies:
     pre:
         - brew update
         - brew tap caskroom/cask
-        - brew unlink brew-cask
-        - brew install brew-cask
         - brew update && brew upgrade brew-cask && brew cleanup && brew cask cleanup
         - brew tap caskroom/versions
         - brew cask info java7
