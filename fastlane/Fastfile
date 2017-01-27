@@ -65,7 +65,13 @@ platform :ios do
   end
 end
 
+platform :android do
 
+  desc "Beta release app. Deploy a new version to the Google Play Store - Alpha channel"
+  lane :beta do |options|
+    supply(track: 'beta', apk: "platforms/android/build/outputs/apk/android-release.apk", package_name: 'com.briebug.barcodetest')
+  end
+end
 # More information about multiple platforms in fastlane: https://github.com/fastlane/fastlane/blob/master/fastlane/docs/Platforms.md
 # All available actions: https://github.com/fastlane/fastlane/blob/master/fastlane/docs/Actions.md
 
