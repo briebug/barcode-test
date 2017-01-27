@@ -41,9 +41,8 @@ test:
         - echo 'No tests to run'
 deployment:
     beta_distribution:
-        branch: 'develop'
+        branch: 'android-sdk'
         commands:
-            - cp build/* platforms/android
             - ionic build ios --release
             - ruby fastlane/select_xcode_signing_method.rb -p platforms/ios/barcode-test.xcodeproj -t barcode-test -m 'Manual' -b $CIRCLE_BUILD_NUM -i platforms/ios/barcode-test/barcode-test-Info.plist
             - fastlane ios beta
