@@ -41,7 +41,7 @@ test:
         - echo 'No tests to run'
 deployment:
     beta_distribution:
-        branch: 'develop'
+        branch: 'android-sdk'
         commands:
             - cp build/* platforms/android
             - ionic build ios --release
