@@ -6,6 +6,11 @@ machine:
     environment:
         XCODE_WORKSPACE: "platforms/ios/barcode-test.xcworkspace"
         GYM_CODE_SIGNING_IDENTITY: "iPhone Distribution: BrieBug Software, Inc. (4CS6W5LV48)"
+        SIGNING_KEY_URI: "https://s3.amazonaws.com/briebug-build/barcode-test/barcode-test.keystore"
+        RELEASE_SIGNING_PROPERTIES_URI: "https://s3.amazonaws.com/briebug-build/barcode-test/release-signing.properties"
+        JSON_KEY_URI: "https://s3.amazonaws.com/briebug-build/key.json"
+        DOWNLOAD_LOCATION: ${HOME}/${CIRCLE_PROJECT_REPONAME}/platforms/android/
+        KEYSTORE_NAME: 'barcode-test.keystore'
 
     xcode:
         version: 8.0
@@ -13,6 +18,7 @@ machine:
 ## Customize dependencies
 dependencies:
     pre:
+        - bash ./get_keystore.sh
         - brew update
         - brew tap caskroom/cask
         - brew cleanup && brew cask cleanup
@@ -35,9 +41,11 @@ test:
         - echo 'No tests to run'
 deployment:
     beta_distribution:
-        branch: 'develop'
+        branch: 'android-sdk'
         commands:
             - ionic build ios --release
             - ruby fastlane/select_xcode_signing_method.rb -p platforms/ios/barcode-test.xcodeproj -t barcode-test -m 'Manual' -b $CIRCLE_BUILD_NUM -i platforms/ios/barcode-test/barcode-test-Info.plist
             - fastlane ios beta
+            - ionic build android --release -- --gradleArg=-PcdvVersionCode=$CIRCLE_BUILD_NUM
+            - fastlane android beta
             - cp -R ./dist $CIRCLE_ARTIFACTS

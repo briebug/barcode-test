@@ -5,3 +5,4 @@ team_id ENV["TEAM_ID"]  # Developer Portal Team ID
 
 # you can even provide different app identifiers, Apple IDs and team names per lane:
 # More information: https://github.com/fastlane/fastlane/blob/master/fastlane/docs/Appfile.md
+json_key_file "key.json"
